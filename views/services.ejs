@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Mafube Local Municipality</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Reuse your navigation here -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-between items-center h-auto py-3">
+                <div class="flex items-center w-full md:w-auto justify-between">
+                    <div class="flex items-center">
+                        <img src="/images/Mafube.png" alt="Mafube Logo" class="h-12 w-auto mr-3">
+                        <h1 class="text-xl sm:text-2xl font-bold text-green-600">Mafube Municipality</h1>
+                    </div>
+                    <div class="flex md:hidden">
+                        <button type="button" onclick="toggleMenu()" class="inline-flex items-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div id="mobileMenu" class="hidden md:flex w-full md:w-auto items-center justify-center mt-3 md:mt-0">
+                    <a href="/" class="text-green-600 font-medium mx-3">Home</a>
+                    <a href="/about" class="text-gray-600 hover:text-green-600 mx-3">About</a>
+                    <a href="/services" class="text-gray-600 hover:text-green-600 mx-3">Services</a>
+                    <a href="/projects" class="text-gray-600 hover:text-green-600 mx-3">Projects</a>
+                    <a href="/contact" class="text-gray-600 hover:text-green-600 mx-3">Contact</a>
+                    <% if (user && user.name) { %>
+                        <span class="mx-3 text-sm">Welcome, <%= user.name %></span>
+                        <a href="/logout" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
+                    <% } else { %>
+                        <a href="/login" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mx-2">Login</a>
+                        <a href="/signup" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Sign Up</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-green-600 py-16">
+        <div class="absolute inset-0">
+            <img class="w-full h-full object-cover" src="/images/Mafube.png" alt="Municipal Services">
+            <div class="absolute inset-0 bg-green-600 mix-blend-multiply"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold text-white mb-4">Municipal Services</h1>
+            <p class="text-xl text-white">Essential services for our community</p>
+        </div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Essential Services -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Water Services -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Water Services</h2>
+                    <ul class="space-y-3 text-gray-600">
+                        <li>Water Supply</li>
+                        <li>Water Quality Testing</li>
+                        <li>Infrastructure Maintenance</li>
+                        <li>Emergency Repairs</li>
+                    </ul>
+                    <div class="mt-6">
+                        <p class="text-sm text-gray-500">Emergency Contact: (058) 813 1588</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Electricity -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Electricity</h2>
+                    <ul class="space-y-3 text-gray-600">
+                        <li>Power Distribution</li>
+                        <li>Street Lighting</li>
+                        <li>Meter Reading</li>
+                        <li>Fault Reporting</li>
+                    </ul>
+                    <div class="mt-6">
+                        <p class="text-sm text-gray-500">Fault Reporting: (058) 813 1051</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Waste Management -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Waste Management</h2>
+                    <ul class="space-y-3 text-gray-600">
+                        <li>Household Collection</li>
+                        <li>Recycling Programs</li>
+                        <li>Street Cleaning</li>
+                        <li>Landfill Management</li>
+                    </ul>
+                    <div class="mt-6">
+                        <p class="text-sm text-gray-500">Collection Schedule: Weekly</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roads and Infrastructure -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Roads & Infrastructure</h2>
+                    <ul class="space-y-3 text-gray-600">
+                        <li>Road Maintenance</li>
+                        <li>Storm Water Management</li>
+                        <li>Street Signs</li>
+                        <li>Public Facilities</li>
+                    </ul>
+                    <div class="mt-6">
+                        <p class="text-sm text-gray-500">Report Issues: (058) 813 1051</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community Services -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Community Services</h2>
+                    <ul class="space-y-3 text-gray-600">
+                        <li>Library Services</li>
+                        <li>Parks & Recreation</li>
+                        <li>Community Halls</li>
+                        <li>Youth Programs</li>
+                    </ul>
+                    <div class="mt-6">
+                        <p class="text-sm text-gray-500">Information: (058) 813 1051</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergency Services -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Emergency Services</h2>
+                    <ul class="space-y-3 text-gray-600">
+                        <li>Fire Services</li>
+                        <li>Disaster Management</li>
+                        <li>Emergency Response</li>
+                        <li>24/7 Control Room</li>
+                    </ul>
+                    <div class="mt-6">
+                        <p class="text-sm text-red-600 font-bold">Emergency: 10111</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service Payment Information -->
+        <div class="mt-16 bg-white rounded-lg shadow-lg p-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Payment Information</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Payment Methods</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Online Banking</li>
+                        <li>• Direct Deposit</li>
+                        <li>• Municipal Office</li>
+                        <li>• EFT Transfer</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Banking Details</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>Bank: Standard Bank</li>
+                        <li>Account Name: Mafube Municipality</li>
+                        <li>Account Number: XXXX XXXX XXXX</li>
+                        <li>Branch Code: XXXXX</li>
+                        <li>Reference: Your Account Number</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reuse your footer here -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="/gallery" class="text-gray-300 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="/services" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="/contact" class="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="/about" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Local Schools -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Local Schools</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="https://www.education.gov.za/Mfundo-Thuto" 
+                               target="_blank" 
+                               class="text-gray-300 hover:text-white transition-colors">
+                                Mfundo Thuto SS
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.education.gov.za/Falesizwe" 
+                               target="_blank" 
+                               class="text-gray-300 hover:text-white transition-colors">
+                                Falesizwe SS
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.education.gov.za/Tsebolwazi" 
+                               target="_blank" 
+                               class="text-gray-300 hover:text-white transition-colors">
+                                Tsebolwazi SS
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <!-- Contact Information -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                            info@mafube.gov.za
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                            </svg>
+                            (058) 813 1051
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                            </svg>
+                            64 Church Street, Frankfort
+                        </li>
+                        <li>Free State, South Africa</li>
+                        <li>9830</li>
+                    </ul>
+                </div>
+    
+                <!-- Social Media -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com/MafubeMunicipality" 
+                           target="_blank" 
+                           class="text-gray-300 hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/MafubeMuni" 
+                           target="_blank" 
+                           class="text-gray-300 hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/MafubeMunicipality" 
+                           target="_blank" 
+                           class="text-gray-300 hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; <%= new Date().getFullYear() %> Mafube Local Municipality. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

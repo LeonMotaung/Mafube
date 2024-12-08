@@ -1,0 +1,237 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <title>
+   About Us - Mafube Municipality
+  </title>
+ </head>
+ <body class="bg-gray-100">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md">
+   <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+    <!-- Logo and Brand -->
+    <a class="flex items-center" href="#">
+     <img alt="Mafube Logo with green and blue colors" height="50" src="/images/Mafube.png" width="50"/>
+     <span class="ml-2 text-green-600 font-bold text-xl">
+      Mafube Municipality
+     </span>
+    </a>
+    <!-- Hamburger Toggle Button -->
+    <button class="block lg:hidden text-gray-600 focus:outline-none" id="navbar-toggle">
+     <i class="fas fa-bars">
+     </i>
+    </button>
+    <!-- Collapsible Navigation Content -->
+    <div class="hidden lg:flex lg:items-center lg:space-x-4" id="navbar-menu">
+     <a class="text-green-600 hover:text-green-800" href="/home">
+      Home
+     </a>
+     <a class="text-green-600 hover:text-green-800" href="/aboutus">
+      About Us
+     </a>
+     <a class="text-green-600 hover:text-green-800" href="/contactus">
+      Contact Us
+     </a>
+     <a class="text-green-600 hover:text-green-800" href="/login">
+      Login
+     </a>
+     <!-- Search Form -->
+     <form class="flex items-center ml-4">
+      <input aria-label="Search" class="form-input px-4 py-2 rounded-md border border-gray-300" placeholder="Search" type="search"/>
+      <button class="ml-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700" type="submit">
+       Search
+      </button>
+     </form>
+    </div>
+   </div>
+   <!-- Mobile Menu -->
+   <div class="hidden lg:hidden" id="mobile-menu">
+    <a class="block text-green-600 hover:text-green-800 py-2 px-4" href="/home">
+     Home
+    </a>
+    <a class="block text-green-600 hover:text-green-800 py-2 px-4" href="/aboutus">
+     About Us
+    </a>
+    <a class="block text-green-600 hover:text-green-800 py-2 px-4" href="/contactus">
+     Contact Us
+    </a>
+    <a class="block text-green-600 hover:text-green-800 py-2 px-4" href="/login">
+     Login
+    </a>
+    <!-- Search Form -->
+    <form class="flex items-center py-2 px-4">
+     <input aria-label="Search" class="form-input px-4 py-2 rounded-md border border-gray-300 w-full" placeholder="Search" type="search"/>
+     <button class="ml-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700" type="submit">
+      Search
+     </button>
+    </form>
+   </div>
+  </nav>
+  <!-- About Us Section -->
+  <div class="container mx-auto px-4 py-12">
+   <div class="bg-white p-8 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold text-center text-green-600 mb-6">
+     About Us
+    </h2>
+    <p class="text-gray-700 mb-6">
+     Mafube Local Municipality is committed to driving sustainable development, delivering quality services, and empowering our vibrant communities. Nestled in the scenic Free State Province, our municipality encompasses the towns of Frankfort, Villiers, Tweeling, and Cornelia, serving as a hub for agriculture, local business, and cultural heritage.
+    </p>
+    <p class="text-gray-700 mb-6">
+     Guided by principles of transparency, accountability, and innovation, we focus on improving infrastructure, enhancing service delivery, and fostering economic opportunities for all. By prioritizing community engagement and collaboration, we aim to build a municipality that is inclusive, prosperous, and responsive to the evolving needs of our residents. Together, we envision a future where every citizen has access to opportunities, resources, and a better quality of life.
+    </p>
+   </div>
+   <!-- Municipal Services -->
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+    <!-- Water -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+     <img alt="Water infrastructure with pipes and clean water flowing" class="w-full h-48 object-cover rounded-md mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/ahWciZ4kuIYAFhK9QUUFOLeeh1g1IKe62BDrFtXNSy40UsvnA.jpg" width="600"/>
+     <h3 class="text-xl font-bold text-green-600 mb-2">
+      Water
+     </h3>
+     <p class="text-gray-700">
+      Ensuring access to clean and safe water for all residents through sustainable water management and infrastructure development.
+     </p>
+    </div>
+    <!-- Road -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+     <img alt="Road infrastructure with newly paved roads and street lights" class="w-full h-48 object-cover rounded-md mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/vykEKkGeA4QDFaeBAzFll3XdgfXwr7LMceXf9ZSZDia9Sxe9E.jpg" width="600"/>
+     <h3 class="text-xl font-bold text-green-600 mb-2">
+      Road
+     </h3>
+     <p class="text-gray-700">
+      Developing and maintaining road infrastructure to ensure safe and efficient transportation for all residents.
+     </p>
+    </div>
+    <!-- School -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+     <img alt="School building with students and educational facilities" class="w-full h-48 object-cover rounded-md mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/mLmYKr5Oo4r9IRW4oVvRiOn9t3xkFvMqPaUCq2u6SI9ki99E.jpg" width="600"/>
+     <h3 class="text-xl font-bold text-green-600 mb-2">
+      School
+     </h3>
+     <p class="text-gray-700">
+      Investing in educational facilities and resources to provide quality education and opportunities for our youth.
+     </p>
+    </div>
+    <!-- Electricity -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+     <img alt="Electricity infrastructure with power lines and substations" class="w-full h-48 object-cover rounded-md mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/KQdphe8Y0YVMBqNNgyPFzfDnueX6ilcfYf4Ua6GnYg8NTxe9E.jpg" width="600"/>
+     <h3 class="text-xl font-bold text-green-600 mb-2">
+      Electricity
+     </h3>
+     <p class="text-gray-700">
+      Providing reliable and sustainable electricity to power homes, businesses, and public services.
+     </p>
+    </div>
+    <!-- Housing -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+     <img alt="Housing infrastructure with modern residential buildings" class="w-full h-48 object-cover rounded-md mb-4" height="400" src="https://storage.googleapis.com/a1aa/image/ScVv3FY0FV6zBBdKI68fEVnZSfB4hQSl033GeA8YcnjqUsvnA.jpg" width="600"/>
+     <h3 class="text-xl font-bold text-green-600 mb-2">
+      Housing
+     </h3>
+     <p class="text-gray-700">
+      Developing affordable and quality housing solutions to meet the needs of our growing population.
+     </p>
+    </div>
+   </div>
+  </div>
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-gray-900">
+    <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div class="md:flex md:justify-between">
+          <div class="mb-6 md:mb-0">
+              <a href="/" class="flex items-center">
+                  <img src="/images/Mafube.png" class="h-8 me-3" alt="FlowBite Logo" />
+                  <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"> Mafube Local Municipality</span>
+              </a>
+          </div>
+          <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+              <div>
+                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+                  <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                      <li class="mb-4">
+                          <a href="/home" class="hover:underline">Mafube Local Municipality</a>
+                      </li>
+                      <li>
+                          <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
+                      </li>
+                  </ul>
+              </div>
+              <div>
+                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+                  <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                      <li class="mb-4">
+                          <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
+                      </li>
+                      <li>
+                          <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
+                      </li>
+                  </ul>
+              </div>
+              <div>
+                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+                  <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                      <li class="mb-4">
+                          <a href="#" class="hover:underline">Privacy Policy</a>
+                      </li>
+                      <li>
+                          <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+      <div class="sm:flex sm:items-center sm:justify-between">
+          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+          </span>
+          <div class="flex mt-4 sm:justify-center sm:mt-0">
+              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
+                        <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
+                    </svg>
+                  <span class="sr-only">Facebook page</span>
+              </a>
+              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
+                        <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"/>
+                    </svg>
+                  <span class="sr-only">Discord community</span>
+              </a>
+              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 17">
+                    <path fill-rule="evenodd" d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z" clip-rule="evenodd"/>
+                </svg>
+                  <span class="sr-only">Twitter page</span>
+              </a>
+              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="sr-only">GitHub account</span>
+              </a>
+              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z" clip-rule="evenodd"/>
+                </svg>
+                  <span class="sr-only">Dribbble account</span>
+              </a>
+          </div>
+      </div>
+    </div>
+</footer>
+  <script>
+   document.getElementById('navbar-toggle').addEventListener('click', function () {
+            var menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        });
+  </script>
+ </body>
+</html>
