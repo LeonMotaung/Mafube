@@ -10,7 +10,6 @@ const passport = require('passport');
 const nodemailer = require('nodemailer');
 const app = express();
 
-// Configure multer for file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads/');
@@ -26,7 +25,7 @@ const upload = multer({
     limits: { fileSize: 50* 1024 * 1024 } // 10MB limit
 });
 
-// Middleware
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
