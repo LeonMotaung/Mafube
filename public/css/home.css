@@ -1,0 +1,124 @@
+
+      /* Animation classes */
+      @keyframes slideInLeft {
+        from {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    .slide-in-left {
+        animation: slideInLeft 0.5s forwards; /* Animation for the first div */
+    }
+    
+    .hidden {
+        opacity: 0; /* Hidden class to initially hide the second div */
+    }
+    
+          .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+          }
+    
+          .slide-in-right {
+            opacity: 0;
+            transform: translateX(100%);
+            animation: slideInRight 1s forwards;
+          }
+    
+          /* Keyframes for animations */
+          @keyframes slideInLeft {
+            to {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
+    
+          @keyframes fadeIn {
+            to {
+              opacity: 1;
+            }
+          }
+    
+          @keyframes slideInRight {
+            to {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
+            .play-pause-button {
+                font-size: 48px;
+                cursor: pointer;
+                background: none;
+                border: none;
+                outline: none;
+                transition: transform 0.2s;
+            }
+            .play-pause-button:hover {
+                transform: scale(1.1);
+            }
+    
+          /* Responsive design to stack columns on small screens */
+          @media (max-width: 767.98px) {
+            .col-md-3, .col-md-6 {
+              order: 0;
+            }
+            .col-md-6 {
+              order: -1;
+              margin-bottom: 2rem;
+            }
+          }
+          /* Animation for sliding in from the right */
+          .slide-in-right {
+            opacity: 0;
+            transform: translateX(100%);
+            animation: slideInRight 1s forwards;
+          }
+    
+          /* Animation for sliding in from the left */
+          .slide-in-left {
+            opacity: 0;
+            transform: translateX(-100%);
+            animation: slideInLeft 1s forwards;
+          }
+    
+          /* Keyframes for slide-in animations */
+          @keyframes slideInRight {
+            from {
+              opacity: 0;
+              transform: translateX(100%);
+            }
+            to {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
+    
+          @keyframes slideInLeft {
+            from {
+              opacity: 0;
+              transform: translateX(-100%);
+            }
+            to {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
+    
+          /* Delay animations to make them appear one after the other */
+          .leadership {
+            animation-delay: 0.5s;
+          }
+          .services {
+            animation-delay: 1s;
+          }
+          .documents {
+            animation-delay: 0.5s;
+          }
+          .supply-chain {
+            animation-delay: 1s;
+          }

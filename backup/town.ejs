@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= town %> - Mafube Municipality</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6"><%= town %></h1>
+
+        <!-- Show posting form only if user is logged in and has correct ward -->
+        <% if (isLoggedIn && allowedWards.includes(parseInt(user.wardNumber))) { %>
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h2 class="text-xl font-semibold mb-4">Post a Comment</h2>
+                <form action="/<%= town.toLowerCase() %>/comment" method="POST" enctype="multipart/form-data">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">Your Comment</label>
+                        <textarea 
+                            name="content" 
+                            class="w-full p-3 border rounded-lg"
+                            rows="4"
+                            required
+                        ></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">Add Image (optional)</label>
+                        <input 
+                            type="file" 
+                            name="image" 
+                            accept="image/*"
+                            class="w-full p-2 border rounded-lg"
+                        >
+                    </div>
+                    <button 
+                        type="submit"
+                        class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600"
+                    >
+                        Post Comment
+                    </button>
+                </form>
+            </div>
+        <% } else if (isLoggedIn) { %>
+            <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-8">
+                <p>You don't have permission to post in <%= town %>. Only residents of wards 
+                    <%= allowedWards.join(', ') %> can post here.</p>
+            </div>
+        <% } else { %>
+            <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-8">
+                <p>Please <a href="/login" class="underline">login</a> to post comments.</p>
+            </div>
+        <% } %>
+
+        <!-- Comments Section -->
+        <div class="space-y-6">
+            <% if (comments.length === 0) { %>
+                <p class="text-gray-500 text-center py-8">No comments yet.</p>
+            <% } else { %>
+                <% comments.forEach(comment => { %>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="font-semibold"><%= comment.user.names %> <%= comment.user.surname %></h3>
+                                <p class="text-sm text-gray-500">Ward <%= comment.ward %></p>
+                            </div>
+                            <span class="text-sm text-gray-500">
+                                <%= new Date(comment.createdAt).toLocaleDateString() %>
+                            </span>
+                        </div>
+                        <p class="text-gray-700 mb-4"><%= comment.content %></p>
+                        <% if (comment.image) { %>
+                            <img 
+                                src="<%= comment.image %>" 
+                                alt="Comment image" 
+                                class="max-w-full h-auto rounded-lg"
+                            >
+                        <% } %>
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

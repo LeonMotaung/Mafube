@@ -1,0 +1,172 @@
+<html lang="en"></html>
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <title>Profile - Mafube Municipality</title>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <!-- Logo and Brand -->
+            <a class="flex items-center" href="#">
+                <img alt="Logo of Mafube Municipality with green and blue colors" class="w-12 h-12" height="50" src="https://storage.googleapis.com/a1aa/image/cgfwKQ4eldmeroUoHYqj6qAzX4Ljje63wLTfwr5tDK4kCGf9E.jpg" width="50"/>
+                <span class="ml-2 text-green-600 font-bold text-xl">Mafube Municipality</span>
+            </a>
+            <!-- Hamburger Toggle Button -->
+            <button class="block lg:hidden text-gray-600 focus:outline-none" id="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Collapsible Navigation Content -->
+            <div class="hidden lg:flex lg:items-center lg:space-x-4" id="navbar-menu">
+                <a class="text-green-600 hover:text-green-800" href="/home">Home</a>
+                <a class="text-green-600 hover:text-green-800" href="/aboutus">About Us</a>
+                <a class="text-green-600 hover:text-green-800" href="/contactus">Contact Us</a>
+                <a class="text-green-600 hover:text-green-800" href="/login">Login</a>
+                <!-- Search Form -->
+                <form class="flex items-center ml-4">
+                    <input aria-label="Search" class="form-input px-4 py-2 rounded-md border border-gray-300" placeholder="Search" type="search"/>
+                    <button class="ml-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden lg:hidden" id="mobile-menu">
+            <a class="block text-green-600 hover:text-green-800 py-2 px-4" href="/home">Home</a>
+            <a class="block text-green-600 hover:text-green-800 py-2 px-4" href="/aboutus">About Us</a>
+            <a class="block text-green-600 hover:text-green-800 py-2 px-4" href="/contactus">Contact Us</a>
+            <a class="block text-green-600 hover:text-green-800 py-2 px-4" href="/login">Login</a>
+            <!-- Search Form -->
+            <form class="flex items-center py-2 px-4">
+                <input aria-label="Search" class="form-input px-4 py-2 rounded-md border border-gray-300 w-full" placeholder="Search" type="search"/>
+                <button class="ml-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
+            <h2 class="text-2xl font-bold text-center text-green-600 mb-6">User Profile</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700"><i class="fas fa-user mr-2"></i>Names</label>
+                <p class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300">John Doe</p>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700"><i class="fas fa-user mr-2"></i>Surname</label>
+                <p class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300">Smith</p>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700"><i class="fas fa-id-card mr-2"></i>ID Number</label>
+                <p class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300">1234567890123</p>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700"><i class="fas fa-map-marker-alt mr-2"></i>Ward Number</label>
+                <p class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300">5</p>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700"><i class="fas fa-home mr-2"></i>Suburb</label>
+                <p class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300">Greenfield</p>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700"><i class="fas fa-city mr-2"></i>Town</label>
+                <p class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300">Springfield</p>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700"><i class="fas fa-envelope mr-2"></i>Postal Code</label>
+                <p class="mt-1 block w-full px-4 py-2 rounded-md border border-gray-300">12345</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-900">
+        <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+            <div class="md:flex md:justify-between">
+                <div class="mb-6 md:mb-0">
+                    <a href="/" class="flex items-center">
+                        <img src="https://storage.googleapis.com/a1aa/image/cgfwKQ4eldmeroUoHYqj6qAzX4Ljje63wLTfwr5tDK4kCGf9E.jpg" class="h-8 me-3" alt="Logo of Mafube Municipality with green and blue colors" />
+                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Mafube Local Municipality</span>
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                            <li class="mb-4">
+                                <a href="/home" class="hover:underline">Mafube Local Municipality</a>
+                            </li>
+                            <li>
+                                <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                            <li class="mb-4">
+                                <a href="https://github.com/themesberg/flowbite" class="hover:underline "><i class="fab fa-github mr-2"></i>Github</a>
+                            </li>
+                            <li>
+                                <a href="https://discord.gg/4eeurUVvTy" class="hover:underline"><i class="fab fa-discord mr-2"></i>Discord</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+                        <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                            <li class="mb-4">
+                                <a href="#" class="hover:underline"><i class="fas fa-user-secret mr-2"></i>Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:underline"><i class="fas fa-file-contract mr-2"></i>Terms &amp; Conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+                </span>
+                <div class="flex mt-4 sm:justify-center sm:mt-0">
+                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                        <i class="fab fa-facebook-f"></i>
+                        <span class="sr-only">Facebook page</span>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                        <i class="fab fa-discord"></i>
+                        <span class="sr-only">Discord community</span>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                        <i class="fab fa-twitter"></i>
+                        <span class="sr-only">Twitter page</span>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                        <i class="fab fa-github"></i>
+                        <span class="sr-only">GitHub account</span>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                        <i class="fab fa-dribbble"></i>
+                        <span class="sr-only">Dribbble account</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript to handle the navbar toggle -->
+    <script>
+        document.getElementById('navbar-toggle').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
