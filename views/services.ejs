@@ -5,70 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - Mafube Local Municipality</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Municipal services offered by Mafube Local Municipality">
 </head>
-<body class="bg-gray-50">
-    <!-- Reuse your navigation here -->
-    <nav class="bg-white shadow-lg">
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-wrap justify-between items-center h-auto py-3">
                 <div class="flex items-center w-full md:w-auto justify-between">
-                    <div class="flex items-center">
-                        <img src="/images/Mafube.png" alt="Mafube Logo" class="h-12 w-auto mr-3">
-                        <h1 class="text-xl sm:text-2xl font-bold text-green-600">Mafube Municipality</h1>
-                    </div>
-                    <div class="flex md:hidden">
-                        <button type="button" onclick="toggleMenu()" class="inline-flex items-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
-                    </div>
+                    <a href="/" class="flex items-center space-x-2">
+                        <img src="/images/Mafube.png" alt="Mafube Logo" class="h-8 sm:h-12 w-auto">
+                        <h1 class="text-lg sm:text-2xl font-bold text-green-600">Mafube Municipality</h1>
+                    </a>
+                    <button 
+                        type="button" 
+                        onclick="toggleMenu()" 
+                        class="md:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
                 </div>
 
-                <!-- Navigation Links -->
-                <div id="mobileMenu" class="hidden md:flex w-full md:w-auto items-center justify-center mt-3 md:mt-0">
-                    <a href="/" class="text-green-600 font-medium mx-3">Home</a>
-                    <a href="/about" class="text-gray-600 hover:text-green-600 mx-3">About</a>
-                    <a href="/services" class="text-gray-600 hover:text-green-600 mx-3">Services</a>
-                    <a href="/projects" class="text-gray-600 hover:text-green-600 mx-3">Projects</a>
-                    <a href="/contact" class="text-gray-600 hover:text-green-600 mx-3">Contact</a>
-                    <% if (user && user.name) { %>
-                        <span class="mx-3 text-sm">Welcome, <%= user.name %></span>
-                        <a href="/logout" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
-                    <% } else { %>
-                        <a href="/login" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mx-2">Login</a>
-                        <a href="/signup" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Sign Up</a>
-                    <% } %>
+                <div id="mobileMenu" class="hidden md:flex w-full md:w-auto flex-col md:flex-row items-start md:items-center space-y-2 md:space-y-0 mt-3 md:mt-0">
+                    <div class="flex flex-col md:flex-row w-full md:w-auto space-y-2 md:space-y-0">
+                        <a href="/" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded hover:bg-gray-100">Home</a>
+                        <a href="/about" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded hover:bg-gray-100">About</a>
+                        <a href="/services" class="text-green-600 font-medium px-3 py-2 rounded bg-gray-100 md:bg-transparent">Services</a>
+                        <a href="/projects" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded hover:bg-gray-100">Projects</a>
+                        <a href="/contact" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded hover:bg-gray-100">Contact</a>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="relative bg-green-600 py-16">
+    <div class="relative bg-green-600">
         <div class="absolute inset-0">
-            <img class="w-full h-full object-cover" src="/images/Mafube.png" alt="Municipal Services">
-            <div class="absolute inset-0 bg-green-600 mix-blend-multiply"></div>
+            <img 
+                class="w-full h-full object-cover" 
+                src="/images/services-hero.jpg" 
+                alt="Municipal Services"
+                loading="lazy"
+            >
+            <div class="absolute inset-0 bg-green-600 mix-blend-multiply opacity-90"></div>
         </div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-4xl font-bold text-white mb-4">Municipal Services</h1>
-            <p class="text-xl text-white">Essential services for our community</p>
+        <div class="relative max-w-7xl mx-auto py-16 sm:py-24 px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">Our Services</h1>
+            <p class="text-lg sm:text-xl text-white max-w-3xl mx-auto">Delivering essential municipal services to our communities</p>
         </div>
     </div>
 
     <!-- Services Grid -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Essential Services -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Water Services -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
                 <div class="p-6">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center mb-4">
+                        <svg class="h-6 w-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
                         </svg>
+                        <h2 class="text-xl font-semibold text-gray-900 ml-2">Water Services</h2>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Water Services</h2>
                     <ul class="space-y-3 text-gray-600">
                         <li>Water Supply</li>
                         <li>Water Quality Testing</li>
@@ -322,5 +325,39 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            
+            menu.classList.toggle('hidden');
+            
+            // Animate menu icon
+            if (menu.classList.contains('hidden')) {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        }
+
+        // Close mobile menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                document.getElementById('mobileMenu').classList.add('hidden');
+                document.getElementById('menuIcon').setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('mobileMenu');
+            const menuButton = document.querySelector('button[onclick="toggleMenu()"]');
+            
+            if (!menu.contains(e.target) && !menuButton.contains(e.target) && !menu.classList.contains('hidden')) {
+                toggleMenu();
+            }
+        });
+    </script>
 </body>
 </html>
