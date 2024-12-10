@@ -104,24 +104,141 @@ app.get('/signup', (req, res) => {
 
 app.post('/signup', async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        const user = new User({
+        // Log the received data
+        console.log('Signup attempt:', {
             name: req.body.name,
             surname: req.body.surname,
             idNumber: req.body.idNumber,
-            wardNumber: parseInt(req.body.wardNumber),
-            suburb: req.body.suburb,
+            wardNumber: req.body.wardNumber,
             town: req.body.town,
-            state: req.body.state,
+            suburb: req.body.suburb,
             postalCode: req.body.postalCode,
-            password: hashedPassword
+            state: req.body.state // Added state field
         });
+
+        // Validate required fields
+        if (!req.body.name || !req.body.surname || !req.body.idNumber || 
+            !req.body.wardNumber || !req.body.town || !req.body.suburb || 
+            !req.body.password || !req.body.postalCode || !req.body.state) {
+            return res.render('signup', {
+                error: 'All fields are required',
+                isLoggedIn: false
+            });
+        }
+
+        // Validate postal code (South African format)
+        const postalCodeRegex = /^\d{4}$/;
+        if (!postalCodeRegex.test(req.body.postalCode)) {
+            return res.render('signup', {
+                error: 'Invalid postal code format. Must be 4 digits',
+                isLoggedIn: false
+            });
+        }
+
+        // State validation (Free State for Mafube)
+        if (req.body.state !== 'Free State') {
+            return res.render('signup', {
+                error: 'Municipality is located in Free State only',
+                isLoggedIn: false
+            });
+        }
+
+        // Validate ID Number format (assuming South African ID)
+        const idNumberRegex = /^\d{13}$/;
+        if (!idNumberRegex.test(req.body.idNumber)) {
+            return res.render('signup', {
+                error: 'Invalid ID Number format. Must be 13 digits',
+                isLoggedIn: false
+            });
+        }
+
+        // Check if user already exists
+        const existingUser = await User.findOne({ idNumber: req.body.idNumber });
+        if (existingUser) {
+            return res.render('signup', {
+                error: 'A user with this ID number already exists',
+                isLoggedIn: false
+            });
+        }
+
+        // Validate ward number matches town
+        const wardMap = {
+            'Frankfort': [2, 5, 6, 7],
+            'Villiers': [3, 4, 9],
+            'Cornelia': [1],
+            'Tweeling': [8]
+        };
+
+        const wardNumber = parseInt(req.body.wardNumber);
+        const town = req.body.town;
+
+        if (!wardMap[town] || !wardMap[town].includes(wardNumber)) {
+            return res.render('signup', {
+                error: 'Invalid ward number for selected town',
+                isLoggedIn: false
+            });
+        }
+
+        // Password validation
+        if (req.body.password.length < 6) {
+            return res.render('signup', {
+                error: 'Password must be at least 6 characters long',
+                isLoggedIn: false
+            });
+        }
+
+        // Create new user with added fields
+        const user = new User({
+            name: req.body.name.trim(),
+            surname: req.body.surname.trim(),
+            idNumber: req.body.idNumber.trim(),
+            wardNumber: parseInt(req.body.wardNumber),
+            town: req.body.town,
+            suburb: req.body.suburb.trim(),
+            postalCode: req.body.postalCode.trim(),
+            state: req.body.state.trim(),
+            password: await bcrypt.hash(req.body.password, 10)
+        });
+
+        // Save user to database
         await user.save();
-        res.redirect('/login');
+
+        // Log successful creation
+        console.log('User created successfully:', user._id);
+
+        // Create session
+        req.session.userId = user._id;
+        req.session.wardNumber = user.wardNumber;
+        req.session.town = user.town;
+
+        // Redirect to home page
+        res.redirect('/');
+
     } catch (error) {
-        res.render('signup', { 
-            error: 'Error creating account',
-            isLoggedIn: false 
+        console.error('Signup error details:', {
+            message: error.message,
+            stack: error.stack,
+            name: error.name
+        });
+
+        if (error.name === 'MongoServerError' && error.code === 11000) {
+            return res.render('signup', {
+                error: 'This ID number is already registered',
+                isLoggedIn: false
+            });
+        }
+
+        if (error.name === 'ValidationError') {
+            const messages = Object.values(error.errors).map(err => err.message);
+            return res.render('signup', {
+                error: messages.join(', '),
+                isLoggedIn: false
+            });
+        }
+
+        res.render('signup', {
+            error: 'An error occurred during signup. Please try again.',
+            isLoggedIn: false
         });
     }
 });
