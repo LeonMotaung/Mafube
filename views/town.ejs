@@ -174,9 +174,9 @@
                             </div>
 
                             <!-- Comment Image -->
-                            <% if (comment.image) { %>
+                            <% if (comment.image && comment.image.data) { %>
                                 <div class="border-t">
-                                    <img src="<%= comment.image %>" 
+                                    <img src="/image/<%= comment._id %>" 
                                          alt="Comment image" 
                                          class="w-full h-48 object-cover cursor-pointer"
                                          onclick="openImageModal(this.src)">
@@ -345,11 +345,5 @@
             }
         }
     </script>
-
-    <style>
-    .content-truncate {
-        display: inline;
-    }
-    </style>
 </body>
 </html>

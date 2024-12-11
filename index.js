@@ -10,19 +10,10 @@ const passport = require('passport');
 const nodemailer = require('nodemailer');
 const app = express();
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads/');
-    },
-    filename: (req, file, cb) => {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
-    }
-});
-
-const upload = multer({ 
+const storage = multer.memoryStorage();
+const upload = multer({
     storage,
-    limits: { fileSize: 50* 1024 * 1024 } // 10MB limit
+    limits: { fileSize: 5 * 1024 * 1024 } // Limit to 5MB since we're storing in MongoDB
 });
 
 
@@ -305,7 +296,10 @@ app.post('/comment', isAuthenticated, validateWard, upload.single('image'), asyn
         const comment = new Comment({
             user: req.session.userId,
             content: req.body.content,
-            image: req.file ? `/uploads/${req.file.filename}` : null,
+            image: req.file ? {
+                data: req.file.buffer,
+                contentType: req.file.mimetype
+            } : null,
             town: req.session.town,
             wardNumber: req.session.wardNumber
         });
@@ -432,18 +426,27 @@ app.get('/:town', async (req, res) => {
 app.post('/:town/comment', isAuthenticated, validateWard, upload.single('image'), async (req, res) => {
     try {
         const town = req.params.town.charAt(0).toUpperCase() + req.params.town.slice(1);
-        const comment = new Comment({
+        const commentData = {
             user: req.session.userId,
             content: req.body.content,
-            image: req.file ? `/uploads/${req.file.filename}` : null,
             town: town,
             wardNumber: req.session.wardNumber
-        });
+        };
+
+        if (req.file) {
+            commentData.image = {
+                data: req.file.buffer,
+                contentType: req.file.mimetype
+            };
+        }
+
+        const comment = new Comment(commentData);
         await comment.save();
         res.redirect(`/${req.params.town}`);
     } catch (error) {
+        console.error('Error posting comment:', error);
         res.render('error', { 
-            message: 'Error posting comment',
+            message: 'Error posting comment. Please try again.',
             isLoggedIn: true 
         });
     }
@@ -451,6 +454,22 @@ app.post('/:town/comment', isAuthenticated, validateWard, upload.single('image')
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/login');
+});
+
+// Add a route to serve the images
+app.get('/image/:commentId', async (req, res) => {
+    try {
+        const comment = await Comment.findById(req.params.commentId);
+        if (comment && comment.image && comment.image.data) {
+            res.contentType(comment.image.contentType);
+            res.send(comment.image.data);
+        } else {
+            res.status(404).send('Image not found');
+        }
+    } catch (error) {
+        console.error('Error serving image:', error);
+        res.status(500).send('Error loading image');
+    }
 });
 
 const port = process.env.PORT || 3000;

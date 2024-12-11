@@ -8,25 +8,20 @@ const commentSchema = new mongoose.Schema({
     },
     content: {
         type: String,
-        required: true,
-        trim: true
-    },
-    image: {
-        type: String,
-        default: null
-    },
-    town: {
-        type: String,
-        required: true,
-        enum: ['Frankfort', 'Villiers', 'Cornelia', 'Tweeling']
+        required: true
     },
     wardNumber: {
         type: Number,
-        required: true,
-        enum: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        required: true
+    },
+    town: {
+        type: String,
+        required: true
+    },
+    image: {
+        data: Buffer,
+        contentType: String
     }
-}, {
-    timestamps: true
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Comment', commentSchema);
