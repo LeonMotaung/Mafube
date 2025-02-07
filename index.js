@@ -8,6 +8,7 @@ const User = require('./models/User');
 const Comment = require('./models/Comment');
 const passport = require('passport');
 const nodemailer = require('nodemailer');
+
 const app = express();
 
 const storage = multer.memoryStorage();
@@ -39,14 +40,20 @@ app.use((req, res, next) => {
     next();
 });
 
-// MongoDB Connection
-mongoose.connect('mongodb+srv://smetchappy:Egd8lV7C8J5mcymM@backeddb.pmksk.mongodb.net/Mafube?retryWrites=true&w=majority&appName=BackedDB', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
-    console.log('Connected to MongoDB Mafube Database');
-}).catch(err => {
-    console.error('Error connecting to MongoDB', err);
+mongoose.connect('mongodb+srv://smetchappy:Egd8lV7C8J5mcymM@backeddb.pmksk.mongodb.net/Mafube?retryWrites=true&w=majority&appName=BackedDB', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log('Connected to MongoDB Mafube Database');
+        // You can register the admin here if needed, or just keep the connection open
+    })
+    .catch(err => {
+        console.error('Error connecting to MongoDB', err);
+    });
+// Create index for comments
+mongoose.connection.once('open', () => {
+    Comment.collection.createIndex({ createdAt: -1 }, (err) => {
+        if (err) console.error('Error creating index:', err);
+        else console.log('Created index on createdAt field');
+    });
 });
 
 // Authentication middleware
@@ -233,6 +240,54 @@ app.post('/signup', async (req, res) => {
         });
     }
 });
+// Backend route implementation
+app.get('/forgot-password', (req, res) => {
+    res.render('forgot-password', { 
+        error: null,
+        message: null,
+        isLoggedIn: false 
+    });
+});
+
+app.post('/forgot-password', async (req, res) => {
+    try {
+        const user = await User.findOne({ idNumber: req.body.idNumber });
+        
+        if (!user) {
+            return res.render('forgot-password', { 
+                error: 'ID Number not found',
+                message: null,
+                isLoggedIn: false 
+            });
+        }
+
+        // Generate a new random password
+        const newPassword = Math.random().toString(36).slice(-8);
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        // Update the user's password
+        await User.updateOne(
+            { idNumber: req.body.idNumber },
+            { $set: { password: hashedPassword } }
+        );
+
+        // You might want to send this password to the user's email here
+        // For now, we'll just show it in the response
+        res.render('forgot-password', { 
+            error: null,
+            message: `New password: ${newPassword}`,
+            isLoggedIn: false 
+        });
+
+    } catch (error) {
+        console.error('Forgot password error:', error);
+        res.render('forgot-password', { 
+            error: 'An error occurred. Please try again.',
+            message: null,
+            isLoggedIn: false 
+        });
+    }
+});
 
 app.get('/login', (req, res) => {
     res.render('login', { 
@@ -271,23 +326,32 @@ app.post('/login', async (req, res) => {
     }
 });
 
+// Modify dashboard route
 app.get('/dashboard', isAuthenticated, async (req, res) => {
     try {
         const user = await User.findById(req.session.userId);
-        const comments = await Comment.find({ wardNumber: user.wardNumber })
-            .populate('user', 'name surname')
-            .sort('-createdAt');
-        
-        res.render('dashboard', {
-            user,
-            comments,
-            isLoggedIn: true
-        });
+        const comments = await Comment.aggregate([
+            { $match: { wardNumber: user.wardNumber } },
+            { $sort: { createdAt: -1 } },
+            { $lookup: {
+                from: 'users',
+                localField: 'user',
+                foreignField: '_id',
+                as: 'userInfo'
+            } },
+            { $unwind: '$userInfo' },
+            { $project: {
+                content: 1,
+                createdAt: 1,
+                image: 1,
+                'userInfo.name': 1,
+                'userInfo.surname': 1
+            }}
+        ]).allowDiskUse(true);
+
+        res.render('dashboard', { user, comments, isLoggedIn: true });
     } catch (error) {
-        res.render('error', { 
-            message: 'Error loading dashboard',
-            isLoggedIn: true 
-        });
+        // Handle error
     }
 });
 
@@ -469,6 +533,54 @@ app.get('/image/:commentId', async (req, res) => {
     } catch (error) {
         console.error('Error serving image:', error);
         res.status(500).send('Error loading image');
+    }
+});
+
+app.get('/users-details', async (req, res) => {
+    try {
+        const users = await User.find().select('-password').lean();
+        res.render('users-details', { 
+            users,
+            title: 'User Management - Mafube Local Municipality',
+            isLoggedIn: true
+        });
+    } catch (err) {
+        console.error('Error in /users-details route:', err);
+        res.status(500).render('error', { 
+            message: 'Error retrieving users',
+            isLoggedIn: true 
+        });
+    }
+});
+
+app.post('/users-details/delete/:id', async (req, res) => {
+    try {
+        await User.findByIdAndDelete(req.params.id);
+        res.redirect('/users-details');
+    } catch (err) {
+        console.error('Error deleting user:', err);
+        res.status(500).render('error', { 
+            message: 'Error deleting user',
+            isLoggedIn: true 
+        });
+    }
+});
+
+app.get('/frankfort', isAuthenticated, async (req, res) => {
+    try {
+        const comments = await Comment.find({ town: 'Frankfort' })
+            .populate('user')
+            .sort({ createdAt: -1 });
+
+        res.render('town', { 
+            town: 'Frankfort', 
+            comments: comments,
+            user: req.session.user || null,  // Pass user if logged in, null if not
+            isLoggedIn: !!req.session.user
+        });
+    } catch (error) {
+        console.error('Error occurred while accessing /frankfort:', error);
+        res.status(500).render('error', { message: 'Internal Server Error' });
     }
 });
 
